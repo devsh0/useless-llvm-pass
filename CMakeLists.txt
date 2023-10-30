@@ -4,6 +4,8 @@ project(Skeleton)
 # LLVM uses C++17.
 set(CMAKE_CXX_STANDARD 17)
 
+set(LLVM_DIR /opt/homebrew/Cellar/llvm/17.0.3/lib/cmake/llvm)
+
 # Load LLVMConfig.cmake. If this fails, consider setting `LLVM_DIR` to point
 # to your LLVM installation's `lib/cmake/llvm` directory.
 find_package(LLVM REQUIRED CONFIG)
@@ -20,3 +22,4 @@ link_directories(${LLVM_LIBRARY_DIRS})
 
 # Our pass lives in this subdirectory.
 add_subdirectory(skeleton)
+add_executable(test tests/main.c)

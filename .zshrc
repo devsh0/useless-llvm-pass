@@ -1,0 +1,2 @@
+alias myclang="clang -fpass-plugin=`echo /Users/devsh0/CLionProjects/llvm-pass-skeleton/cmake-build-debug/skeleton/SkeletonPass.*`"
+alias myclang++="clang++ -fpass-plugin=`echo /Users/devsh0/CLionProjects/llvm-pass-skeleton/cmake-build-debug/skeleton/SkeletonPass.*`"
