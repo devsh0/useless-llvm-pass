@@ -1,10 +1,8 @@
 #include <stdio.h>
 
-double max(double a, double b) {
-    return a > b ? a : b;
-}
-
-int main() {
-    printf("The larger number is: %f\n", max(10, 20));
+int main(int argc, char** argv) {
+    int lhs = 20;
+    int result = argc + lhs;
+    printf("%d + %d = %d\n", argc, lhs, result);
     return 0;
 }

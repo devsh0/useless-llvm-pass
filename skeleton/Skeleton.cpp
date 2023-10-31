@@ -1,7 +1,6 @@
 #include "llvm/Passes/PassBuilder.h"
 #include "llvm/Passes/PassPlugin.h"
 #include "llvm/Support/raw_ostream.h"
-#include <iostream>
 
 using namespace llvm;
 using PassPluginInfo = ::llvm::PassPluginLibraryInfo;
@@ -13,8 +12,8 @@ namespace {
                 for (auto& basicBlock : function) {
                     for (auto& instruction : basicBlock) {
                         auto* binaryOperator = dyn_cast<BinaryOperator>(&instruction);
-                        IRBuilder<> builder(binaryOperator);
                         if (binaryOperator != nullptr) {
+                            IRBuilder<> builder(binaryOperator);
                             Value* lhs = binaryOperator->getOperand(0);
                             Value* rhs = binaryOperator->getOperand(1);
                             Value* timesOperator = builder.CreateMul(lhs, rhs);
@@ -23,13 +22,12 @@ namespace {
                                 User* user = use.getUser();
                                 user->setOperand(use.getOperandNo(), timesOperator);
                             }
-
-                            // return true;
                         }
                     }
                 }
             }
-            return PreservedAnalyses::all();
+
+            return PreservedAnalyses::none();
         };
     };
 }
